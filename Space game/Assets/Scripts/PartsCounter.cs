@@ -5,28 +5,36 @@ using UnityEngine.UI;
 public class PartsCounter : MonoBehaviour
 {
     public Text objectiveText;
-
-    void Start()
-    {
-        if (objectiveText == null)
-        {
-            Debug.LogError("Objective Text is not assigned!");
-            enabled = false;
-        }
-    }
+    private bool gameWon = false;
 
     void Update()
     {
+        if (gameWon || objectiveText == null)
+            return;
+
         if (SpaceShipParts.partsCollected < SpaceShipParts.totalParts)
         {
-            objectiveText.text =
-                "OBJECTIVE:\nCollect Spaceship Parts (" +
+            objectiveText.text = "OBJECTIVE:\nCollect Spaceship Parts (" +
                 SpaceShipParts.partsCollected + "/" +
                 SpaceShipParts.totalParts + ")";
         }
         else
         {
             objectiveText.text = "OBJECTIVE:\nReturn to the ship";
+        }
+    }
+
+    public void ShowVictory()
+    {
+        gameWon = true;
+
+        if (objectiveText != null)
+        {
+            objectiveText.text =
+                "MISSION COMPLETE!\n\n" +
+                "CONGRATULATIONS!\n" +
+                "You repaired your spaceship and escaped the planet!\n\n" +
+                "YOU WIN!";
         }
     }
 }

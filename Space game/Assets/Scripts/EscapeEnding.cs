@@ -16,18 +16,17 @@ public class EscapeEnding : MonoBehaviour
         {
             escaped = true;
 
-            if (objectiveText != null)
-            {
+            PartsCounter counter = FindObjectOfType<PartsCounter>();
+
+            if (counter != null)
+                counter.ShowVictory();
+            else if (objectiveText != null)
                 objectiveText.text =
                     "MISSION COMPLETE!\n\n" +
                     "CONGRATULATIONS!\n" +
-                    "You repaired your spaceship and escaped the planet!\n\n" +
-                    "YOU WIN!";
-            }
+                    "You escaped the planet!\n\nYOU WIN!";
 
             Debug.Log("MISSION COMPLETE! YOU WIN!");
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
         }
     }
 }
