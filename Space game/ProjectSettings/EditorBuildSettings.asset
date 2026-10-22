@@ -4,5 +4,9 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/SpaceExploration.unity
+    guid: 1d808a17781d20844b0431bae89a7b02
   m_configObjects: {}
+  m_UseUCBPForAssetBundles: 0
