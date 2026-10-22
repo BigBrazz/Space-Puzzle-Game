@@ -20,4 +20,5 @@ public class SpaceShipParts : MonoBehaviour
 
         Destroy(gameObject);
     }
+
 }
