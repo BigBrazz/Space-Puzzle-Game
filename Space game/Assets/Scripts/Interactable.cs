@@ -27,6 +27,7 @@ public class Interactable : MonoBehaviour
     
     public void Trigger(GameObject player) {
         if (!CanInteract()) return;
+        Debug.Log($"Triggered {gameObject.name} by {player.name}");
         onTriggered?.Invoke();
     }
 }

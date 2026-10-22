@@ -5,7 +5,7 @@ public class InteractionManager : MonoBehaviour
 {
     [Header("Detection")]
     [SerializeField, Min(0.1f)] private float searchRadius = 4f;
-    [SerializeField] private LayerMask interactableLayers = LayerMask.GetMask("Interactable");
+    [SerializeField] private LayerMask interactableLayers;
 
     [Header("Prompt UI")]
     [SerializeField] private InteractionPrompt defaultPrompt;
@@ -63,12 +63,13 @@ public class InteractionManager : MonoBehaviour
 
     private void SetTarget(Interactable target)
     {
-        if (currentTarget.InteractionKey != KeyCode.None) interactionKey = currentTarget.InteractionKey;
-        
+        if (target != null && target.InteractionKey != KeyCode.None) interactionKey = target.InteractionKey;
+        else if (currentTarget != null && currentTarget.InteractionKey != KeyCode.None) interactionKey = currentTarget.InteractionKey;
+        else interactionKey = KeyCode.E;
+
         currentTarget = target;
         isHolding = false;
         holdTimer = 0f;
-        currentPrompt.SetProgress(0f);
 
         // Remove the previous prompt.
         if (currentPrompt != null)
@@ -77,22 +78,26 @@ public class InteractionManager : MonoBehaviour
             currentPrompt = null;
         }
 
-        if (currentTarget == null) return;
+        if (currentTarget == null)
+        {
+            Debug.Log("No interactable target found.");
+            return;  
+        } 
 
         // Choose custom prefab or fallback to default.
-        InteractionPrompt prefab =
-            currentTarget.CustomPrompt != null
+        InteractionPrompt prefab = currentTarget.CustomPrompt != null
                 ? currentTarget.CustomPrompt
                 : defaultPrompt;
 
-        if (prefab == null || promptParent == null)
+        if (prefab == null || promptParent == null){
+            Debug.Log("Failed to create interaction prompt.");
             return;
-
+        }
         // Create and display the new prompt.
         currentPrompt = Instantiate(prefab, promptParent);
-
+        Debug.Log("Showing prompt for: " + currentTarget.name);
         currentPrompt.Show(
-            currentTarget.ActionText,
+            string.Format(currentTarget.ActionText, interactionKey.ToString()),
             currentTarget.HoldDuration > 0f
         );
     }

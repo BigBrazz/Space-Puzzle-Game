@@ -13,7 +13,7 @@ public class InteractionPrompt : MonoBehaviour
     {
         gameObject.SetActive(true);
         if (actionLabel != null)
-            actionLabel.text = $"[E] {actionText}";
+            actionLabel.text = actionText;
 
         if (progressFill != null)
         {
