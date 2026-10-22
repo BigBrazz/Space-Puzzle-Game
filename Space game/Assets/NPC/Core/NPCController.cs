@@ -5,6 +5,7 @@ using UnityEngine;
 public class NPCController : MonoBehaviour
 {
     [Header("NPC Data")]
+    [Tooltip("Optional - if left empty, this auto-fills from the NPCData component on this same object.")]
     [SerializeField] private NPCData npcData;
 
     // Components
@@ -13,8 +14,8 @@ public class NPCController : MonoBehaviour
     public NPCAnimation Animation { get; private set; }
 
     private NPCStateMachine StateMachine;
-    public NPCData Data => npcData; 
-    public Transform Target {get; private set; }
+    public NPCData Data => npcData;
+    public Transform Target { get; private set; }
 
     private void Awake()
     {
@@ -22,17 +23,20 @@ public class NPCController : MonoBehaviour
         Detection = GetComponent<NPCDetection>();
         Animation = GetComponent<NPCAnimation>();
 
+        if (npcData == null)
+        {
+            npcData = GetComponent<NPCData>();
+        }
+
         StateMachine = new NPCStateMachine();
     }
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         ChangeState(new NPCIdleState(this));
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         StateMachine.Update();
     }

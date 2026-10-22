@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class NPCDetection : MonoBehaviour
@@ -8,6 +6,7 @@ public class NPCDetection : MonoBehaviour
 
     private readonly Collider[] results = new Collider[32];
 
+    [Tooltip("No longer required for detection (tag-based now), kept for compatibility.")]
     [SerializeField] private LayerMask playerLayer;
 
     private void Awake()
@@ -17,59 +16,25 @@ public class NPCDetection : MonoBehaviour
 
     public bool CanSeePlayer()
     {
-        int count = Physics.OverlapSphereNonAlloc(
-            transform.position,
-            npc.Data.DetectionRadius,
-            results,
-            playerLayer
-        );
-
-        for (int i = 0; i < count; i++)
-        {
-            Collider target = results[i];
-            Vector3 direction = (target.bounds.center - transform.position);
-            float distance = direction.magnitude;
-            // raycast for sight detection ensuring that no obstacles are in the way of the NPC and the player
-            if (Physics.Raycast(
-                transform.position, 
-                direction.normalized, 
-                out RaycastHit hit, 
-                distance,
-                ~playerLayer,
-                QueryTriggerInteraction.Ignore
-            ))   
-            {   
-                return true;
-            }
-        }
-        return false;
+        return GetDetectedPlayer() != null;
     }
 
+    // Finds the player purely by the "Player" tag within DetectionRadius -
+    // avoids relying on a dedicated Player physics layer, since this project
+    // doesn't have one set up (everything sits on Default).
     public Transform GetDetectedPlayer()
     {
         int count = Physics.OverlapSphereNonAlloc(
             transform.position,
             npc.Data.DetectionRadius,
-            results,
-            playerLayer
+            results
         );
 
         for (int i = 0; i < count; i++)
         {
-            Collider target = results[i];
-            Vector3 direction = (target.bounds.center - transform.position);
-            float distance = direction.magnitude;
-            // raycast for sight detection ensuring that no obstacles are in the way of the NPC and the player
-            if (Physics.Raycast(
-                transform.position, 
-                direction.normalized, 
-                out RaycastHit hit, 
-                distance,
-                ~playerLayer,
-                QueryTriggerInteraction.Ignore
-            ))   
-            {   
-                return target.transform;
+            if (results[i].CompareTag("Player"))
+            {
+                return results[i].transform;
             }
         }
         return null;

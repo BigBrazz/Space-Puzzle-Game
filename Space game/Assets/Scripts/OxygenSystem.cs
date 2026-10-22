@@ -47,7 +47,7 @@ public class OxygenSystem : MonoBehaviour
         }
     }
 
-    private void GameOver()
+    public void GameOver()
     {
         if (gameEnded)
             return;
