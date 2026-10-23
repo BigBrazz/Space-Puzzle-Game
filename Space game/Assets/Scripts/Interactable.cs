@@ -25,7 +25,7 @@ public class Interactable : MonoBehaviour
         return enabled && gameObject.activeInHierarchy;
     }
     
-    public void Trigger(GameObject player) {
+    public virtual void Trigger(GameObject player) {
         if (!CanInteract()) return;
         Debug.Log($"Triggered {gameObject.name} by {player.name}");
         onTriggered?.Invoke();
