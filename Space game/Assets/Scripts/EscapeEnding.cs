@@ -28,11 +28,13 @@ public class EscapeEnding : MonoBehaviour
                 if (counter != null)
                     counter.ShowVictory();
                 else if (objectiveText != null)
+                {
+                    //counter.ResetPartsCounter();
                     objectiveText.text =
                         "MISSION COMPLETE!\n\n" +
                         "CONGRATULATIONS!\n" +
                         "You escaped the planet!\n\nYOU WIN!";
-
+                }
                 Debug.Log("MISSION COMPLETE! YOU WIN!");
             }
         }

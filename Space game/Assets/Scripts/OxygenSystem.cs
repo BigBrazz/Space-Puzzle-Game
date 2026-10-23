@@ -78,6 +78,11 @@ public class OxygenSystem : MonoBehaviour
     public void RestartGame()
     {
         Time.timeScale = 1f;
+        PartsCounter counter = FindObjectOfType<PartsCounter>();
+        if (counter != null)
+        {
+            counter.ResetPartsCounter();
+        }
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

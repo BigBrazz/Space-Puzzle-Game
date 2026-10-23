@@ -24,10 +24,15 @@ public class PartsCounter : MonoBehaviour
         }
     }
 
+    public void ResetPartsCounter()
+    {
+        SpaceShipParts.partsCollected = 0;
+    }
+
     public void ShowVictory()
     {
         gameWon = true;
-
+        //ResetPartsCounter();
         if (objectiveText != null)
         {
             objectiveText.text =
