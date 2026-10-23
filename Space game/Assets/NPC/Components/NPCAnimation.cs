@@ -37,7 +37,7 @@ public class NPCAnimation : MonoBehaviour
 
     private void Update()
     {
-        float bobOffset = Mathf.Sin(Time.time * bobSpeed) * bobHeight;
+        float bobOffset = (Mathf.Sin(Time.time * bobSpeed) + 1f) / 2f * bobHeight;
         visual.localPosition = basePosition + Vector3.up * bobOffset;
 
         if (npc == null || npc.Target == null) return;

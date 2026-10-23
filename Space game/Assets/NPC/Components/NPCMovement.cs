@@ -23,7 +23,7 @@ public class NPCMovement : MonoBehaviour
 
         transform.position = Vector3.MoveTowards(
             transform.position,
-            targetPosition,
+            new Vector3(targetPosition.x, 0, targetPosition.z),
             speed * Time.deltaTime
         );
 
