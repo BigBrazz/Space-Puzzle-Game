@@ -27,8 +27,8 @@ Your spaceship has crashed on an unknown planet. To escape, you must explore the
 ## Team — Explore_3
 
 - Bryan Thierry Mendes Da Costa (BigBrazz)
-- Tahmeed Imaad Ahmed (kroen77)
-- Salman (zerostackdev)
+- Tahmeed Imaad Ahmed (zerostackdev)
+- Salman (kroen77)
 - Hasan Warraich (Hasan-xarraich)
 
 ## Third-party / AI usage
