@@ -13,7 +13,7 @@ public class Interactable : MonoBehaviour
     [SerializeField] private KeyCode interactionKey = KeyCode.E;
 
     [Header("Events")]
-    [SerializeField] private UnityEvent onTriggered;
+    [SerializeField] private UnityEvent<GameObject> onTriggered;
     
     public InteractionPrompt CustomPrompt => customPrompt;
     public string ActionText => actionText;
@@ -25,9 +25,9 @@ public class Interactable : MonoBehaviour
         return enabled && gameObject.activeInHierarchy;
     }
     
-    public virtual void Trigger(GameObject player) {
+    public void Trigger(GameObject player) {
         if (!CanInteract()) return;
         Debug.Log($"Triggered {gameObject.name} by {player.name}");
-        onTriggered?.Invoke();
+        onTriggered?.Invoke(player);
     }
 }
