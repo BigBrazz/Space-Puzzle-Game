@@ -38,6 +38,17 @@ public class OxygenSystem : MonoBehaviour
         }
     }
 
+    // returns false if oxygen is already full or the game is over
+    public bool AddOxygen(float amount)
+    {
+        if (gameEnded || currentOxygen >= maxOxygen)
+            return false;
+
+        currentOxygen = Mathf.Min(currentOxygen + amount, maxOxygen);
+        UpdateOxygenUI();
+        return true;
+    }
+
     private void UpdateOxygenUI()
     {
         if (oxygenText != null)
