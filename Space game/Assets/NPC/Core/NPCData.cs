@@ -13,5 +13,8 @@ public class NPCData : MonoBehaviour
 
     [Header("Movement")]
     public float MovementSpeed;
+
+    [Header("Behavior")]
+    public bool CanFollowPlayer;
     
 }

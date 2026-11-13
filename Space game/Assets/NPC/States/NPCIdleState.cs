@@ -21,13 +21,17 @@ public class NPCIdleState : NPCStateInterface
     public void Update()
     {
         // Check if a player has been detected
-        Transform detectedPlayer = npc.Detection.GetDetectedPlayer();
-        if (detectedPlayer != null)
+        if (npc.Data.CanFollowPlayer)
         {
-            npc.SetTarget(detectedPlayer);
-            npc.ChangeState(new NPCFollowTarget(npc));
-            return;
+            Transform detectedPlayer = npc.Detection.GetDetectedPlayer();
+            if (detectedPlayer != null)
+            {
+                npc.SetTarget(detectedPlayer);
+                npc.ChangeState(new NPCFollowTarget(npc));
+                return;
+            }
         }
+
     }
 
     public void Exit() {}
