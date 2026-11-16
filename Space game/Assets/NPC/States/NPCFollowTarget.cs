@@ -17,7 +17,6 @@ public class NPCFollowTarget : NPCStateInterface
         target = npc.Target;
         if (target == null)
         {
-            Debug.LogWarning("NPCFollowTarget: Target is null. Cannot follow.");
             npc.ChangeState(new NPCIdleState(npc));
             return;
         }
@@ -25,13 +24,6 @@ public class NPCFollowTarget : NPCStateInterface
 
     public void Update()
     {
-        if (target == null)
-        {
-            Debug.LogWarning("NPCFollowTarget: Target is null. Cannot follow.");
-            npc.ChangeState(new NPCIdleState(npc));
-            return;
-        }
-        
         Transform detectedPlayer = npc.Detection.GetDetectedPlayer();
         if (detectedPlayer == null)
         {
@@ -39,7 +31,7 @@ public class NPCFollowTarget : NPCStateInterface
             return;
         }
 
-        npc.Movement.MoveTo(target.position);
+        npc.Movement.MoveTo(detectedPlayer.position);
     }
 
     public void Exit() {}
