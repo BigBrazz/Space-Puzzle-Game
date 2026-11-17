@@ -16,10 +16,13 @@ public class InteractionManager : MonoBehaviour
     private InteractionPrompt currentPrompt;
     private KeyCode interactionKey = KeyCode.E;
     private float holdTimer;
-    private bool isHolding;
+    private bool isHolding; 
+    private bool dialogueOpen = false;
 
     private void Update()
     {
+        if (dialogueOpen) return;
+        
         Interactable nearest = FindNearestInteractable();
 
         // Update the prompt when the target changes.
@@ -132,7 +135,11 @@ public class InteractionManager : MonoBehaviour
             );
 
             if (distance > interactable.ActivationDistance)
-                continue;
+                continue; 
+
+            Debug.Log("Detected: " + interactable.name +
+            " | Distance: " + distance +
+            " | Action: " + interactable.ActionText);
 
             if (distance < nearestDistance)
             {
@@ -142,5 +149,24 @@ public class InteractionManager : MonoBehaviour
         }
 
         return nearest;
+    } 
+
+    public void SetDialogueOpen(bool isOpen)
+    {
+        dialogueOpen = isOpen;
+
+        if (isOpen)
+        {
+            isHolding = false;
+
+            if (currentPrompt != null)
+                currentPrompt.Hide();
+        }
+        else
+        {
+            // Reset the target so the interaction prompt
+            // can be recreated if the player is still nearby.
+            SetTarget(null);
+        }
     }
 }
