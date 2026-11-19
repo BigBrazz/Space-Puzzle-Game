@@ -9,7 +9,6 @@ public class PlayerMoverment : MonoBehaviour
     [SerializeField] private float jumpForce = 6f;
 
     [Header("Crouch")]
-    [Tooltip("Optional: assign the CameraHolder child to lower the camera while crouching.")]
     [SerializeField] private Transform cameraHolder;
     [SerializeField] private float standingCameraHeight = 0.8f;
     [SerializeField] private float crouchingCameraHeight = 0.4f;

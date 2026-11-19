@@ -16,18 +16,18 @@ public class InteractionManager : MonoBehaviour
     private InteractionPrompt currentPrompt;
     private KeyCode interactionKey = KeyCode.E;
     private float holdTimer;
-    private bool isHolding;
+    private bool isHolding; 
+    private bool dialogueOpen = false;
 
     private void Update()
     {
+        if (dialogueOpen) return;
+        
         Interactable nearest = FindNearestInteractable();
 
-        // Update the prompt when the target changes.
         if (nearest != currentTarget) SetTarget(nearest);
-        // If there is no target then we don't need to check for input.
         if (currentTarget == null) return;
 
-        // First frame of holding, reset the timer.
         if (Input.GetKeyDown(interactionKey))
         {
             if (currentTarget.HoldDuration <= 0f)
@@ -71,7 +71,6 @@ public class InteractionManager : MonoBehaviour
         isHolding = false;
         holdTimer = 0f;
 
-        // Remove the previous prompt.
         if (currentPrompt != null)
         {
             Destroy(currentPrompt.gameObject);
@@ -83,8 +82,6 @@ public class InteractionManager : MonoBehaviour
             Debug.Log("No interactable target found.");
             return;  
         } 
-
-        // Choose custom prefab or fallback to default.
         InteractionPrompt prefab = currentTarget.CustomPrompt != null
                 ? currentTarget.CustomPrompt
                 : defaultPrompt;
@@ -93,9 +90,7 @@ public class InteractionManager : MonoBehaviour
             Debug.Log("Failed to create interaction prompt.");
             return;
         }
-        // Create and display the new prompt.
         currentPrompt = Instantiate(prefab, promptParent);
-        Debug.Log("Showing prompt for: " + currentTarget.name);
         currentPrompt.Show(
             string.Format(currentTarget.ActionText, interactionKey.ToString()),
             currentTarget.HoldDuration > 0f
@@ -132,7 +127,11 @@ public class InteractionManager : MonoBehaviour
             );
 
             if (distance > interactable.ActivationDistance)
-                continue;
+                continue; 
+
+            Debug.Log("Detected: " + interactable.name +
+            " | Distance: " + distance +
+            " | Action: " + interactable.ActionText);
 
             if (distance < nearestDistance)
             {
@@ -142,5 +141,22 @@ public class InteractionManager : MonoBehaviour
         }
 
         return nearest;
+    } 
+
+    public void SetDialogueOpen(bool isOpen)
+    {
+        dialogueOpen = isOpen;
+
+        if (isOpen)
+        {
+            isHolding = false;
+
+            if (currentPrompt != null)
+                currentPrompt.Hide();
+        }
+        else
+        {
+            SetTarget(null);
+        }
     }
 }
