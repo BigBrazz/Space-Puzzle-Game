@@ -5,8 +5,8 @@ using UnityEngine;
 public class NPCData : MonoBehaviour
 {
     [Header("General")]
-    public string npcName;
-    public string npcType;
+    public string Name;
+    public string Type;
 
     [Header("Detection")]
     public float DetectionRadius;
@@ -16,5 +16,8 @@ public class NPCData : MonoBehaviour
 
     [Header("Behavior")]
     public bool CanFollowPlayer;
+
+    [Header("Conversation")]
+    public NPCConversation Conversation;
     
 }

@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64277b35bf6d57845a9c49cb3b06965f, type: 3}
+  m_Name: TestDialogue
+  m_EditorClassIdentifier: 
+  nodes:
+  - nodeName: 
+    dialogueText: Continue 1?
+    choices:
+    - responseText: Go Forwards
+      nextNodeIndex: 1
+      requiredFlags: []
+      blockingFlags: []
+      lockedDisplay: 0
+      lockedReason: 
+      flagsToSet: []
+      flagsToClear: []
+    - responseText: Cancel
+      nextNodeIndex: -1
+      requiredFlags: []
+      blockingFlags: []
+      lockedDisplay: 0
+      lockedReason: 
+      flagsToSet: []
+      flagsToClear: []
+  - nodeName: 
+    dialogueText: Continue 2?
+    choices:
+    - responseText: Go Forwards
+      nextNodeIndex: 2
+      requiredFlags: []
+      blockingFlags: []
+      lockedDisplay: 0
+      lockedReason: 
+      flagsToSet: []
+      flagsToClear: []
+    - responseText: Go Back
+      nextNodeIndex: 1
+      requiredFlags: []
+      blockingFlags: []
+      lockedDisplay: 0
+      lockedReason: 
+      flagsToSet: []
+      flagsToClear: []
+  - nodeName: 
+    dialogueText: Cancel?
+    choices:
+    - responseText: Go Back
+      nextNodeIndex: 1
+      requiredFlags: []
+      blockingFlags: []
+      lockedDisplay: 0
+      lockedReason: 
+      flagsToSet: []
+      flagsToClear: []
+    - responseText: Cancel
+      nextNodeIndex: -1
+      requiredFlags: []
+      blockingFlags: []
+      lockedDisplay: 0
+      lockedReason: 
+      flagsToSet: []
+      flagsToClear: []
