@@ -17,12 +17,11 @@ public class QuestItemPickup : MonoBehaviour
 
         if (inventory.hasEnergyCell)
         {
-            Debug.Log("You already have an energy cell!");
+            Debug.Log("You already have an energy cell!"); 
             return;
         }
 
         inventory.CollectEnergyCell();
-
         Destroy(gameObject);
     }
 }

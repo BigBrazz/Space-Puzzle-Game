@@ -32,7 +32,8 @@ public class InteractionManager : MonoBehaviour
         {
             if (currentTarget.HoldDuration <= 0f)
             {
-                currentTarget.Trigger(gameObject);
+                currentTarget.Trigger(gameObject); 
+                SetTarget(null);
                 return;
             }
             isHolding = true;
@@ -57,7 +58,8 @@ public class InteractionManager : MonoBehaviour
         if (holdTimer >= currentTarget.HoldDuration)
         {
             isHolding = false;
-            currentTarget.Trigger(gameObject);
+            currentTarget.Trigger(gameObject); 
+            SetTarget(null);
         }
     }
 
