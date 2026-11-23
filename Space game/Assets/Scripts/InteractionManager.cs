@@ -25,17 +25,15 @@ public class InteractionManager : MonoBehaviour
         
         Interactable nearest = FindNearestInteractable();
 
-        // Update the prompt when the target changes.
         if (nearest != currentTarget) SetTarget(nearest);
-        // If there is no target then we don't need to check for input.
         if (currentTarget == null) return;
 
-        // First frame of holding, reset the timer.
         if (Input.GetKeyDown(interactionKey))
         {
             if (currentTarget.HoldDuration <= 0f)
             {
-                currentTarget.Trigger(gameObject);
+                currentTarget.Trigger(gameObject); 
+                SetTarget(null);
                 return;
             }
             isHolding = true;
@@ -60,7 +58,8 @@ public class InteractionManager : MonoBehaviour
         if (holdTimer >= currentTarget.HoldDuration)
         {
             isHolding = false;
-            currentTarget.Trigger(gameObject);
+            currentTarget.Trigger(gameObject); 
+            SetTarget(null);
         }
     }
 
@@ -74,7 +73,6 @@ public class InteractionManager : MonoBehaviour
         isHolding = false;
         holdTimer = 0f;
 
-        // Remove the previous prompt.
         if (currentPrompt != null)
         {
             Destroy(currentPrompt.gameObject);
@@ -86,8 +84,6 @@ public class InteractionManager : MonoBehaviour
             Debug.Log("No interactable target found.");
             return;  
         } 
-
-        // Choose custom prefab or fallback to default.
         InteractionPrompt prefab = currentTarget.CustomPrompt != null
                 ? currentTarget.CustomPrompt
                 : defaultPrompt;
@@ -96,9 +92,7 @@ public class InteractionManager : MonoBehaviour
             Debug.Log("Failed to create interaction prompt.");
             return;
         }
-        // Create and display the new prompt.
         currentPrompt = Instantiate(prefab, promptParent);
-        Debug.Log("Showing prompt for: " + currentTarget.name);
         currentPrompt.Show(
             string.Format(currentTarget.ActionText, interactionKey.ToString()),
             currentTarget.HoldDuration > 0f
@@ -164,8 +158,6 @@ public class InteractionManager : MonoBehaviour
         }
         else
         {
-            // Reset the target so the interaction prompt
-            // can be recreated if the player is still nearby.
             SetTarget(null);
         }
     }

@@ -41,11 +41,10 @@ public class NPCQuest : MonoBehaviour
 
         if (inventory == null)
         {
-            Debug.Log("Player inventory not found!");
             return;
         }
 
-        // First interaction: Give the player the quest.
+        // First interaction: Give the player the quest
         if (!questAccepted)
         {
             questAccepted = true;
@@ -57,14 +56,14 @@ public class NPCQuest : MonoBehaviour
             );
         }
 
-        // Second interaction: Check whether the player has the item.
+        // Second interaction: Check whether the player has the item
         else if (inventory.hasEnergyCell)
         {
             inventory.UseEnergyCell();
 
             questCompleted = true;
 
-            // Reward the player with a spaceship component.
+            // Reward the player with a spaceship component
             SpaceShipParts.partsCollected++;
 
             ShowDialogue(
@@ -72,11 +71,9 @@ public class NPCQuest : MonoBehaviour
                 "I managed to recover a spaceship component earlier.\n\n" +
                 "Take it. You might need it to escape this planet."
             );
-
-            Debug.Log("NPC quest completed! Spaceship part rewarded.");
         }
 
-        // Player hasn't found the item yet.
+        // Player hasn't found the item yet
         else
         {
             ShowDialogue(
