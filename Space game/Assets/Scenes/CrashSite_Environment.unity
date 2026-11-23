@@ -7092,7 +7092,7 @@ GameObject:
   m_Component:
   - component: {fileID: 628571661}
   m_Layer: 0
-  m_Name: Formations_Mesas
+  m_Name: OuterBoulders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9783,7 +9783,7 @@ GameObject:
   m_Component:
   - component: {fileID: 824937454}
   m_Layer: 0
-  m_Name: CraterEjecta
+  m_Name: CraterSplatter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21011,7 +21011,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1667492723}
   m_Layer: 0
-  m_Name: Hills_Outcrops
+  m_Name: LargeRocks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23431,7 +23431,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1848516104}
   m_Layer: 0
-  m_Name: ForestGateway_Monoliths
+  m_Name: ForestGateway
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25102,7 +25102,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1974836806}
   m_Layer: 0
-  m_Name: Pebbles_DesertScatter
+  m_Name: Pebbles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26974,6 +26974,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scenesToLoad:
   - AlienForest_Environment
+  - SurvivorCamp_Environment
 --- !u!4 &2087036948
 Transform:
   m_ObjectHideFlags: 0

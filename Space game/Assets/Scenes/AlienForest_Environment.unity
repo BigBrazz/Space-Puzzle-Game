@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 964592731}
-  m_IndirectSpecularColor: {r: 0.07094786, g: 0.12494236, b: 0.15921848, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -13905,7 +13905,7 @@ GameObject:
   m_Component:
   - component: {fileID: 294367068}
   m_Layer: 0
-  m_Name: Canyon_Rim_Rocks
+  m_Name: Canyon_Rocks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15563,7 +15563,7 @@ GameObject:
   m_Component:
   - component: {fileID: 351135101}
   m_Layer: 0
-  m_Name: Canyon_Floor_Boulders
+  m_Name: Canyon_Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -69801,7 +69801,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1629812216}
   m_Layer: 0
-  m_Name: Traversal_BrokenBridge_Canyon
+  m_Name: BrokenBridge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -82400,7 +82400,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1927917815}
   m_Layer: 0
-  m_Name: Boulders_Mossy
+  m_Name: MossyRocks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -86479,7 +86479,6 @@ Transform:
   - {fileID: 583699247}
   - {fileID: 1511163159}
   - {fileID: 1186724063}
-  - {fileID: 2100221267}
   - {fileID: 709512528}
   - {fileID: 32745680}
   - {fileID: 1108288550}
@@ -89401,59 +89400,6 @@ Transform:
   - {fileID: 748290438}
   m_Father: {fileID: 897976309}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2100221266
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2100221267}
-  - component: {fileID: 2100221268}
-  m_Layer: 0
-  m_Name: Wall_034
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2
-  m_IsActive: 1
---- !u!4 &2100221267
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2100221266}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 5, y: 22.5, z: 208}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2037150041}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &2100221268
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2100221266}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2, y: 75, z: 86}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &2104499285
 PrefabInstance:
   m_ObjectHideFlags: 0
