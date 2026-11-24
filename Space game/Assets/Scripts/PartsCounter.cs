@@ -26,7 +26,9 @@ public class PartsCounter : MonoBehaviour
 
     public void ResetPartsCounter()
     {
-        SpaceShipParts.partsCollected = 0;
+        if (PlayerInventory.Instance != null) {
+            PlayerInventory.Instance.RemoveAllOfCategory(ItemCategory.SpaceshipPart);
+        }
     }
 
     public void ShowVictory()
