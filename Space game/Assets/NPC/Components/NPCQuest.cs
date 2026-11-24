@@ -36,13 +36,9 @@ public class NPCQuest : MonoBehaviour
             return;
         }
 
-        PlayerInventory inventory =
-            player.GetComponent<PlayerInventory>();
+        PlayerInventory inventory = player.GetComponent<PlayerInventory>();
 
-        if (inventory == null)
-        {
-            return;
-        }
+        if (inventory == null){return;}
 
         // First interaction: Give the player the quest
         if (!questAccepted)
@@ -57,14 +53,17 @@ public class NPCQuest : MonoBehaviour
         }
 
         // Second interaction: Check whether the player has the item
-        else if (inventory.hasEnergyCell)
+        else if (inventory.RemoveFromInventory(QuestItemData.EnergyCellName))
         {
-            inventory.UseEnergyCell();
-
             questCompleted = true;
+            SpaceshipPartData reward = null;
 
-            // Reward the player with a spaceship component
-            SpaceShipParts.partsCollected++;
+            if (ItemDatabase.Instance != null)
+            {
+                reward = ItemDatabase.Instance.Find("thruster_assembly") as SpaceshipPartData;
+            }
+
+            inventory.AddToInventory(reward);
 
             ShowDialogue(
                 "Survivor: You found one! Thank you!\n\n" +
